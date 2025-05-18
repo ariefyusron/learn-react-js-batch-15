@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import Body from './components/Body'
 import Footer from './components/Footer'
+import TodoList from './components/TodoList'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -10,7 +11,6 @@ const App = () => {
   return (
     <>
       <Header title="Ini Header Pertama" />
-      <Header title="Ini Header Kedua" subTitle="Ini Subtitle" />
 
       <Body>
         <div>
@@ -24,6 +24,10 @@ const App = () => {
       <button onClick={() => {
         setCount(2)
       }}>Klik</button>
+
+      <div>-------------------------</div>
+
+      <TodoList />
     </>
   )
 }
