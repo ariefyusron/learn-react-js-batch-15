@@ -1,9 +1,9 @@
-const Header = ({ title, subTitle = 'Ini nilai default' }) => {
+const Header = ({ title, subTitle }) => {
 
   return (
     <div id="header">
       <h1 className="title">{`${title}-${subTitle}`}</h1>
-      <p>{subTitle}</p>
+      {!subTitle ? <></> : <p>{subTitle}</p> }
     </div>
   )
 }
