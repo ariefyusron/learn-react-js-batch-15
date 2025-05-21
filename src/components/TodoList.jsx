@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router'
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([])
   const [count, setCount] = useState(0)
   const formRef = useRef(null)
+  const navigate = useNavigate()
 
   const handleAddTodo = (desc = 'Belajar React') => {
     setTodoList([
@@ -33,6 +35,7 @@ const TodoList = () => {
           e.preventDefault()
           handleAddTodo(e.target.todo.value)
           e.target.reset()
+          navigate('product')
         }}
       >
         <input
