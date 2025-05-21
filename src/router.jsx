@@ -3,6 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import HomePage from './pages/home'
 import DetailPage from './pages/detail'
 
+import ProductContainer from './pages/products/container'
+import ProductPage from './pages/products'
+import ProductListPage from './pages/products/list'
+import ProductDetailPage from './pages/products/detail'
+
 const RouterComponent = () => {
   return (
     <BrowserRouter>
@@ -10,10 +15,10 @@ const RouterComponent = () => {
         <Route index element={<HomePage />} />
         <Route path='detail/:id' element={<DetailPage />} />
 
-        <Route path='product'>
-          <Route index element={<div>Produk Aja</div>} />
-          <Route path='list' element={<div>Produk List</div>} />
-          <Route path='detail' element={<div>Produk Detail</div>} />
+        <Route path='product' element={<ProductContainer />}>
+          <Route index element={<ProductPage />} />
+          <Route path='list' element={<ProductListPage />} />
+          <Route path='detail' element={<ProductDetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
