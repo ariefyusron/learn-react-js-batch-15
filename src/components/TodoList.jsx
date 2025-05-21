@@ -39,8 +39,7 @@ const TodoList = () => {
           name='todo'
           placeholder='Masukan todo'
         />
-        <button onClick={(e) => {
-          e.preventDefault()
+        <button type='button' onClick={() => {
           formRef.current.reset()
         }}>clear</button>
         <button type='submit'>Tambah</button>
