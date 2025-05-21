@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([])
   const [count, setCount] = useState(0)
-  const [value, setValue] = useState('')
+  const formRef = useRef(null)
 
   const handleAddTodo = (desc = 'Belajar React') => {
     setTodoList([
@@ -27,18 +27,24 @@ const TodoList = () => {
 
   return (
     <>
-      <input
-        placeholder='Masukan todo'
-        onChange={(e) => {
-          setValue(e.target.value)
+      <form
+        ref={formRef}
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleAddTodo(e.target.todo.value)
+          e.target.reset()
         }}
-        value={value}
-      />
-      <button onClick={() => setValue('')}>clear</button>
-      <button onClick={() => {
-        handleAddTodo(value)
-        setValue('')
-      }}>Tambah</button>
+      >
+        <input
+          name='todo'
+          placeholder='Masukan todo'
+        />
+        <button onClick={(e) => {
+          e.preventDefault()
+          formRef.current.reset()
+        }}>clear</button>
+        <button type='submit'>Tambah</button>
+      </form>
 
       {todoList.length > 0 ? (
         <ul>
