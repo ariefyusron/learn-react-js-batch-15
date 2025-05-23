@@ -35,7 +35,7 @@ const TodoList = () => {
           e.preventDefault()
           handleAddTodo(e.target.todo.value)
           e.target.reset()
-          navigate('product')
+          navigate('product?first=arief&last=yusron')
         }}
       >
         <input
