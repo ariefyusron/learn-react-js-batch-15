@@ -1,20 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router'
 
+import storeTodo from '../store/todo'
+
 const TodoList = () => {
-  const [todoList, setTodoList] = useState([])
   const [count, setCount] = useState(0)
   const formRef = useRef(null)
   const navigate = useNavigate()
 
+  const todoList = storeTodo((state) => state.todoList)
+  const setTodoList = storeTodo(state => state.addTodo)
+
   const handleAddTodo = (desc = 'Belajar React') => {
-    setTodoList([
-      {
-        desc,
-        status: 'todo'
-      },
-      ...todoList
-    ])
+    setTodoList({
+      desc,
+      status: 'todo'
+    })
   }
 
   const handleCount = () => {
